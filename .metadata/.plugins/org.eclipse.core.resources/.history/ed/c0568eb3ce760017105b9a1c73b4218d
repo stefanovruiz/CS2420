@@ -1,0 +1,44 @@
+package wordnet;
+
+import edu.princeton.cs.algs4.MaxPQ;
+import edu.princeton.cs.algs4.ST;
+import edu.princeton.cs.algs4.StdOut;
+
+public class Outcast {
+	
+	private WordNet wordnet;
+	
+	   public Outcast(WordNet wordnet){
+		   // constructor takes a WordNet object
+		   this.wordnet = wordnet;
+		   
+	   }
+	   public String outcast(String[] nouns){
+		   // given an array of WordNet nouns, return an outcast
+		   
+		   ST<Integer, String> st = new ST<>();
+		   MaxPQ<Integer> maxPQ = new MaxPQ<>();
+		   
+		   for(int i =0; i<nouns.length; i++){
+			   int distance =0;
+			   for(int j =0; j<nouns.length; j++){
+				   distance += wordnet.distance(nouns[i], nouns[j]);
+			   }
+			   
+			   maxPQ.insert(distance);
+			   st.put(distance, nouns[i]);
+		   }
+		   
+		   return st.get(maxPQ.max());
+		   
+	   }
+	   public static void main(String[] args){  // see test client below
+
+			String[] nounList = {"dog", "cat", "bird", "car"};
+			WordNet wordnet = new WordNet("src/synsets.txt", "src/hypernyms.txt");
+		    Outcast outcast = new Outcast(wordnet);
+		    for (int t = 0; t < nounList.length; t++) {
+		        StdOut.println(nounList[t] + ": " + outcast.outcast(nounList));
+		    }
+	   }
+	}

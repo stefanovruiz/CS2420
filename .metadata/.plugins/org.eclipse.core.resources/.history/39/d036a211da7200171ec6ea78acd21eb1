@@ -1,0 +1,45 @@
+package wordnet;
+
+import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
+public class WordNet {
+	
+	SeparateChainingHashST<String, Queue<Integer>> wordToIntMap;
+	SeparateChainingHashST<Integer, String> intToWordMap;
+	Digraph digraph;
+	SAP sap;
+
+	   // constructor takes the name of the two input files
+	   public WordNet(String synsets, String hypernyms){
+		   if(synsets == null || hypernyms == null) throw new java.lang.NullPointerException();
+		   
+	   }
+
+	   // returns all WordNet nouns
+	   public Iterable<String> nouns(){
+		   
+	   }
+
+	   // is the word a WordNet noun?
+	   public boolean isNoun(String word){
+		   if( word == null) throw new java.lang.NullPointerException();
+	   }
+
+	   // distance between nounA and nounB (defined below)
+	   public int distance(String nounA, String nounB){
+		   if(nounA == null || nounB == null) throw new java.lang.NullPointerException();
+	   }
+
+	   // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
+	   // in a shortest ancestral path (defined below)
+	   public String sap(String nounA, String nounB){
+		   if(nounA == null || nounB == null) throw new java.lang.NullPointerException();
+	   }
+
+	   // do unit testing of this class
+	   public static void main(String[] args){
+		   
+	   }
+	}
